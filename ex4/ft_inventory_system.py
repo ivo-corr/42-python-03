@@ -19,4 +19,18 @@ if __name__ == "__main__":
                 print(f"Quantity error for '{split_value[0]}': {e}")
     print(f"Got inventory: {items}")
     print(f"Item list: {[k for k in items]}")
-    print()
+    total_items = sum(value for value in items.values())
+    print(f"Total quantity of the {len(items)} items: {total_items}")
+    highest = ""
+    lowest = ""
+    for k in items:
+        percentage = round((items[k] / total_items) * 100, 1)
+        if (highest == "" or items[k] > items[highest]):
+            highest = k
+        if (lowest == "" or items[k] < items[lowest]):
+            lowest = k
+        print(f"Item {k} represents: {percentage}%")
+    print(f"Item most abundant: {highest} with quantity {items[highest]}")
+    print(f"Item least abundant: {lowest} with quantity {items[lowest]}")
+    items.update({"magic_item": 1})
+    print(f"Updated inventory: {items}")
