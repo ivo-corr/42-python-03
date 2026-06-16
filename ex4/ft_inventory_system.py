@@ -3,6 +3,10 @@ import sys
 if __name__ == "__main__":
     items = {}
     print("=== Inventory System Analysis ===")
+    if (len(sys.argv) == 1):
+        print("No items provided. Usage: "
+              "python3 <item1>:<qty1> <item2>:<qty2>...")
+        exit()
     for i in sys.argv[1:]:
         try:
             k, v = i.split(":")
